@@ -1,0 +1,49 @@
+name: Link previews
+# Draws the 1200×630 link pictures for new or edited pages and sends them to the site. Started by the site once a day, or by hand.
+# page-cards: only what is missing (new posts, archive items). verse-cards: every verse, a one-off catch-up.
+# Nothing about the pages is printed here: the full log is sent privately to the site.
+on:
+  repository_dispatch:
+    types: [page-cards, verse-cards]
+  workflow_dispatch:
+    inputs:
+      kind: { description: 'page-cards or verse-cards', default: 'page-cards' }
+permissions:
+  contents: read
+concurrency: cards
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      API: ${{ secrets.SITE }}
+      MAP_OPS_KEY: ${{ secrets.JOBS_KEY }}
+      KIND: ${{ github.event.action || inputs.kind || 'page-cards' }}
+    steps:
+      - name: Anything missing?
+        id: n
+        run: |
+          [ -n "$API" ] && [ -n "$MAP_OPS_KEY" ] || { echo "not set up yet"; echo "go=0" >> "$GITHUB_OUTPUT"; exit 0; }
+          if [ "$KIND" = "verse-cards" ]; then echo "go=1" >> "$GITHUB_OUTPUT"; exit 0; fi
+          N=0; for L in en fr es ar kab; do C=$(curl -s -H "x-ops-key: $MAP_OPS_KEY" "$API/api/ops/maps/og/pages?lang=$L&limit=1" | jq '.items | length' 2>/dev/null); echo "$L missing: ${C:-?}"; [ "${C:-1}" != "0" ] && N=1; done
+          echo "go=$N" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.n.outputs.go == '1'
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-node@v4
+        if: steps.n.outputs.go == '1'
+        with: { node-version: 22 }
+      - name: Browser and files
+        if: steps.n.outputs.go == '1'
+        run: |
+          (cd ops/cards && npm i --no-save --no-package-lock playwright@1.47.2 >/dev/null && npx playwright install --with-deps chromium >/dev/null)
+          node ops/cards/files.mjs
+      - name: Draw and send
+        if: steps.n.outputs.go == '1'
+        run: |
+          S=pages; [ "$KIND" = "verse-cards" ] && S=verses
+          for L in en fr es ar kab; do LANG_CODE=$L node ops/cards/$S.mjs >> /tmp/job.log 2>&1 || echo "$L had failures" >> /tmp/job.log; done
+          echo "finished, $(wc -l < /tmp/job.log) log lines sent privately to the site"
+      - name: Send the log privately
+        if: always() && steps.n.outputs.go == '1'
+        run: '[ -f /tmp/job.log ] && curl -s -o /dev/null -w "log %{http_code}\n" -X POST -H "x-ops-key: $MAP_OPS_KEY" --data-binary @/tmp/job.log "$API/api/ops/joblog?job=cards" || true'

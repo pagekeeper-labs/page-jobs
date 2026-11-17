@@ -1,0 +1,1256 @@
+[
+ {
+  "n": 1,
+  "ar": "الفاتحة",
+  "tr": "Al-Fatihah",
+  "meaning": {
+   "en": "The Opening",
+   "fr": "L'Ouverture",
+   "es": "La Apertura"
+  },
+  "verses": 7
+ },
+ {
+  "n": 2,
+  "ar": "البقرة",
+  "tr": "Al-Baqarah",
+  "meaning": {
+   "en": "The Cow",
+   "fr": "La Vache",
+   "es": "La Vaca"
+  },
+  "verses": 286
+ },
+ {
+  "n": 3,
+  "ar": "آل عمران",
+  "tr": "Al Imran",
+  "meaning": {
+   "en": "The Family of Imran",
+   "fr": "La Famille d'Imran",
+   "es": "La Familia de Imran"
+  },
+  "verses": 200
+ },
+ {
+  "n": 4,
+  "ar": "النساء",
+  "tr": "An-Nisa",
+  "meaning": {
+   "en": "The Women",
+   "fr": "Les Femmes",
+   "es": "Las Mujeres"
+  },
+  "verses": 176
+ },
+ {
+  "n": 5,
+  "ar": "المائدة",
+  "tr": "Al-Ma'idah",
+  "meaning": {
+   "en": "The Table",
+   "fr": "La Table",
+   "es": "La Mesa servida"
+  },
+  "verses": 120
+ },
+ {
+  "n": 6,
+  "ar": "الأنعام",
+  "tr": "Al-An'am",
+  "meaning": {
+   "en": "The Cattle",
+   "fr": "Les Bestiaux",
+   "es": "Los Rebaños"
+  },
+  "verses": 165
+ },
+ {
+  "n": 7,
+  "ar": "الأعراف",
+  "tr": "Al-A'raf",
+  "meaning": {
+   "en": "The Heights",
+   "fr": "Les Murailles",
+   "es": "Los Lugares elevados"
+  },
+  "verses": 206
+ },
+ {
+  "n": 8,
+  "ar": "الأنفال",
+  "tr": "Al-Anfal",
+  "meaning": {
+   "en": "The Spoils",
+   "fr": "Le Butin",
+   "es": "El Botín"
+  },
+  "verses": 75
+ },
+ {
+  "n": 9,
+  "ar": "التوبة",
+  "tr": "At-Tawbah",
+  "meaning": {
+   "en": "The Repentance",
+   "fr": "Le Repentir",
+   "es": "El Arrepentimiento"
+  },
+  "verses": 129
+ },
+ {
+  "n": 10,
+  "ar": "يونس",
+  "tr": "Yunus",
+  "meaning": {
+   "en": "Jonah",
+   "fr": "Jonas",
+   "es": "Jonás"
+  },
+  "verses": 109
+ },
+ {
+  "n": 11,
+  "ar": "هود",
+  "tr": "Hud",
+  "meaning": {
+   "en": "Hud",
+   "fr": "Hud",
+   "es": "Hud"
+  },
+  "verses": 123
+ },
+ {
+  "n": 12,
+  "ar": "يوسف",
+  "tr": "Yusuf",
+  "meaning": {
+   "en": "Joseph",
+   "fr": "Joseph",
+   "es": "José"
+  },
+  "verses": 111
+ },
+ {
+  "n": 13,
+  "ar": "الرعد",
+  "tr": "Ar-Ra'd",
+  "meaning": {
+   "en": "The Thunder",
+   "fr": "Le Tonnerre",
+   "es": "El Trueno"
+  },
+  "verses": 43
+ },
+ {
+  "n": 14,
+  "ar": "إبراهيم",
+  "tr": "Ibrahim",
+  "meaning": {
+   "en": "Abraham",
+   "fr": "Abraham",
+   "es": "Abraham"
+  },
+  "verses": 52
+ },
+ {
+  "n": 15,
+  "ar": "الحجر",
+  "tr": "Al-Hijr",
+  "meaning": {
+   "en": "The Rocky Tract",
+   "fr": "Al-Hijr",
+   "es": "Al-Hiyr"
+  },
+  "verses": 99
+ },
+ {
+  "n": 16,
+  "ar": "النحل",
+  "tr": "An-Nahl",
+  "meaning": {
+   "en": "The Bee",
+   "fr": "Les Abeilles",
+   "es": "Las Abejas"
+  },
+  "verses": 128
+ },
+ {
+  "n": 17,
+  "ar": "الإسراء",
+  "tr": "Al-Isra",
+  "meaning": {
+   "en": "The Night Journey",
+   "fr": "Le Voyage nocturne",
+   "es": "El Viaje nocturno"
+  },
+  "verses": 111
+ },
+ {
+  "n": 18,
+  "ar": "الكهف",
+  "tr": "Al-Kahf",
+  "meaning": {
+   "en": "The Cave",
+   "fr": "La Caverne",
+   "es": "La Caverna"
+  },
+  "verses": 110
+ },
+ {
+  "n": 19,
+  "ar": "مريم",
+  "tr": "Maryam",
+  "meaning": {
+   "en": "Mary",
+   "fr": "Marie",
+   "es": "María"
+  },
+  "verses": 98
+ },
+ {
+  "n": 20,
+  "ar": "طه",
+  "tr": "Ta-Ha",
+  "meaning": {
+   "en": "Ta-Ha",
+   "fr": "Ta-Ha",
+   "es": "Ta Ha"
+  },
+  "verses": 135
+ },
+ {
+  "n": 21,
+  "ar": "الأنبياء",
+  "tr": "Al-Anbiya",
+  "meaning": {
+   "en": "The Prophets",
+   "fr": "Les Prophètes",
+   "es": "Los Profetas"
+  },
+  "verses": 112
+ },
+ {
+  "n": 22,
+  "ar": "الحج",
+  "tr": "Al-Hajj",
+  "meaning": {
+   "en": "The Pilgrimage",
+   "fr": "Le Pèlerinage",
+   "es": "La Peregrinación"
+  },
+  "verses": 78
+ },
+ {
+  "n": 23,
+  "ar": "المؤمنون",
+  "tr": "Al-Mu'minun",
+  "meaning": {
+   "en": "The Believers",
+   "fr": "Les Croyants",
+   "es": "Los Creyentes"
+  },
+  "verses": 118
+ },
+ {
+  "n": 24,
+  "ar": "النور",
+  "tr": "An-Nur",
+  "meaning": {
+   "en": "The Light",
+   "fr": "La Lumière",
+   "es": "La Luz"
+  },
+  "verses": 64
+ },
+ {
+  "n": 25,
+  "ar": "الفرقان",
+  "tr": "Al-Furqan",
+  "meaning": {
+   "en": "The Criterion",
+   "fr": "Le Discernement",
+   "es": "El Criterio"
+  },
+  "verses": 77
+ },
+ {
+  "n": 26,
+  "ar": "الشعراء",
+  "tr": "Ash-Shu'ara",
+  "meaning": {
+   "en": "The Poets",
+   "fr": "Les Poètes",
+   "es": "Los Poetas"
+  },
+  "verses": 227
+ },
+ {
+  "n": 27,
+  "ar": "النمل",
+  "tr": "An-Naml",
+  "meaning": {
+   "en": "The Ant",
+   "fr": "Les Fourmis",
+   "es": "Las Hormigas"
+  },
+  "verses": 93
+ },
+ {
+  "n": 28,
+  "ar": "القصص",
+  "tr": "Al-Qasas",
+  "meaning": {
+   "en": "The Narrative",
+   "fr": "Le Récit",
+   "es": "El Relato"
+  },
+  "verses": 88
+ },
+ {
+  "n": 29,
+  "ar": "العنكبوت",
+  "tr": "Al-Ankabut",
+  "meaning": {
+   "en": "The Spider",
+   "fr": "L'Araignée",
+   "es": "La Araña"
+  },
+  "verses": 69
+ },
+ {
+  "n": 30,
+  "ar": "الروم",
+  "tr": "Ar-Rum",
+  "meaning": {
+   "en": "The Romans",
+   "fr": "Les Romains",
+   "es": "Los Bizantinos"
+  },
+  "verses": 60
+ },
+ {
+  "n": 31,
+  "ar": "لقمان",
+  "tr": "Luqman",
+  "meaning": {
+   "en": "Luqman",
+   "fr": "Luqman",
+   "es": "Luqman"
+  },
+  "verses": 34
+ },
+ {
+  "n": 32,
+  "ar": "السجدة",
+  "tr": "As-Sajdah",
+  "meaning": {
+   "en": "The Prostration",
+   "fr": "La Prosternation",
+   "es": "La Prosternación"
+  },
+  "verses": 30
+ },
+ {
+  "n": 33,
+  "ar": "الأحزاب",
+  "tr": "Al-Ahzab",
+  "meaning": {
+   "en": "The Confederates",
+   "fr": "Les Coalisés",
+   "es": "La Coalición"
+  },
+  "verses": 73
+ },
+ {
+  "n": 34,
+  "ar": "سبأ",
+  "tr": "Saba",
+  "meaning": {
+   "en": "Sheba",
+   "fr": "Saba",
+   "es": "Saba"
+  },
+  "verses": 54
+ },
+ {
+  "n": 35,
+  "ar": "فاطر",
+  "tr": "Fatir",
+  "meaning": {
+   "en": "The Originator",
+   "fr": "Le Créateur",
+   "es": "El Originador"
+  },
+  "verses": 45
+ },
+ {
+  "n": 36,
+  "ar": "يس",
+  "tr": "Ya-Sin",
+  "meaning": {
+   "en": "Ya-Sin",
+   "fr": "Ya-Sin",
+   "es": "Ya Sin"
+  },
+  "verses": 83
+ },
+ {
+  "n": 37,
+  "ar": "الصافات",
+  "tr": "As-Saffat",
+  "meaning": {
+   "en": "Those Ranged in Ranks",
+   "fr": "Les Rangés",
+   "es": "Los Puestos en fila"
+  },
+  "verses": 182
+ },
+ {
+  "n": 38,
+  "ar": "ص",
+  "tr": "Sad",
+  "meaning": {
+   "en": "Sad",
+   "fr": "Sad",
+   "es": "Sad"
+  },
+  "verses": 88
+ },
+ {
+  "n": 39,
+  "ar": "الزمر",
+  "tr": "Az-Zumar",
+  "meaning": {
+   "en": "The Groups",
+   "fr": "Les Groupes",
+   "es": "Los Grupos"
+  },
+  "verses": 75
+ },
+ {
+  "n": 40,
+  "ar": "غافر",
+  "tr": "Ghafir",
+  "meaning": {
+   "en": "The Forgiver",
+   "fr": "Le Pardonneur",
+   "es": "El que perdona"
+  },
+  "verses": 85
+ },
+ {
+  "n": 41,
+  "ar": "فصلت",
+  "tr": "Fussilat",
+  "meaning": {
+   "en": "Explained in Detail",
+   "fr": "Les Versets détaillés",
+   "es": "Expuestas detalladamente"
+  },
+  "verses": 54
+ },
+ {
+  "n": 42,
+  "ar": "الشورى",
+  "tr": "Ash-Shura",
+  "meaning": {
+   "en": "The Consultation",
+   "fr": "La Consultation",
+   "es": "La Consulta"
+  },
+  "verses": 53
+ },
+ {
+  "n": 43,
+  "ar": "الزخرف",
+  "tr": "Az-Zukhruf",
+  "meaning": {
+   "en": "The Ornaments",
+   "fr": "L'Ornement",
+   "es": "Los Adornos"
+  },
+  "verses": 89
+ },
+ {
+  "n": 44,
+  "ar": "الدخان",
+  "tr": "Ad-Dukhan",
+  "meaning": {
+   "en": "The Smoke",
+   "fr": "La Fumée",
+   "es": "El Humo"
+  },
+  "verses": 59
+ },
+ {
+  "n": 45,
+  "ar": "الجاثية",
+  "tr": "Al-Jathiyah",
+  "meaning": {
+   "en": "The Kneeling",
+   "fr": "L'Agenouillée",
+   "es": "La Arrodillada"
+  },
+  "verses": 37
+ },
+ {
+  "n": 46,
+  "ar": "الأحقاف",
+  "tr": "Al-Ahqaf",
+  "meaning": {
+   "en": "The Dunes",
+   "fr": "Al-Ahqaf",
+   "es": "Al-Ahqaf"
+  },
+  "verses": 35
+ },
+ {
+  "n": 47,
+  "ar": "محمد",
+  "tr": "Muhammad",
+  "meaning": {
+   "en": "Muhammad",
+   "fr": "Muhammad",
+   "es": "Muhammad"
+  },
+  "verses": 38
+ },
+ {
+  "n": 48,
+  "ar": "الفتح",
+  "tr": "Al-Fath",
+  "meaning": {
+   "en": "The Victory",
+   "fr": "La Victoire",
+   "es": "La Victoria"
+  },
+  "verses": 29
+ },
+ {
+  "n": 49,
+  "ar": "الحجرات",
+  "tr": "Al-Hujurat",
+  "meaning": {
+   "en": "The Chambers",
+   "fr": "Les Appartements",
+   "es": "Los Aposentos"
+  },
+  "verses": 18
+ },
+ {
+  "n": 50,
+  "ar": "ق",
+  "tr": "Qaf",
+  "meaning": {
+   "en": "Qaf",
+   "fr": "Qaf",
+   "es": "Qaf"
+  },
+  "verses": 45
+ },
+ {
+  "n": 51,
+  "ar": "الذاريات",
+  "tr": "Adh-Dhariyat",
+  "meaning": {
+   "en": "The Scatterers",
+   "fr": "Qui éparpillent",
+   "es": "Los que levantan polvo"
+  },
+  "verses": 60
+ },
+ {
+  "n": 52,
+  "ar": "الطور",
+  "tr": "At-Tur",
+  "meaning": {
+   "en": "The Mount",
+   "fr": "Le Mont",
+   "es": "El Monte"
+  },
+  "verses": 49
+ },
+ {
+  "n": 53,
+  "ar": "النجم",
+  "tr": "An-Najm",
+  "meaning": {
+   "en": "The Star",
+   "fr": "L'Étoile",
+   "es": "La Estrella"
+  },
+  "verses": 62
+ },
+ {
+  "n": 54,
+  "ar": "القمر",
+  "tr": "Al-Qamar",
+  "meaning": {
+   "en": "The Moon",
+   "fr": "La Lune",
+   "es": "La Luna"
+  },
+  "verses": 55
+ },
+ {
+  "n": 55,
+  "ar": "الرحمن",
+  "tr": "Ar-Rahman",
+  "meaning": {
+   "en": "The Most Merciful",
+   "fr": "Le Tout-Miséricordieux",
+   "es": "El Compasivo"
+  },
+  "verses": 78
+ },
+ {
+  "n": 56,
+  "ar": "الواقعة",
+  "tr": "Al-Waqi'ah",
+  "meaning": {
+   "en": "The Event",
+   "fr": "L'Événement",
+   "es": "El Acontecimiento"
+  },
+  "verses": 96
+ },
+ {
+  "n": 57,
+  "ar": "الحديد",
+  "tr": "Al-Hadid",
+  "meaning": {
+   "en": "The Iron",
+   "fr": "Le Fer",
+   "es": "El Hierro"
+  },
+  "verses": 29
+ },
+ {
+  "n": 58,
+  "ar": "المجادلة",
+  "tr": "Al-Mujadilah",
+  "meaning": {
+   "en": "The Pleading Woman",
+   "fr": "La Discussion",
+   "es": "La Discusión"
+  },
+  "verses": 22
+ },
+ {
+  "n": 59,
+  "ar": "الحشر",
+  "tr": "Al-Hashr",
+  "meaning": {
+   "en": "The Gathering",
+   "fr": "L'Exode",
+   "es": "La Reunión"
+  },
+  "verses": 24
+ },
+ {
+  "n": 60,
+  "ar": "الممتحنة",
+  "tr": "Al-Mumtahanah",
+  "meaning": {
+   "en": "She Who Is Tested",
+   "fr": "L'Éprouvée",
+   "es": "La Examinada"
+  },
+  "verses": 13
+ },
+ {
+  "n": 61,
+  "ar": "الصف",
+  "tr": "As-Saff",
+  "meaning": {
+   "en": "The Ranks",
+   "fr": "Le Rang",
+   "es": "La Fila"
+  },
+  "verses": 14
+ },
+ {
+  "n": 62,
+  "ar": "الجمعة",
+  "tr": "Al-Jumu'ah",
+  "meaning": {
+   "en": "The Congregation",
+   "fr": "Le Rassemblement",
+   "es": "La Congregación"
+  },
+  "verses": 11
+ },
+ {
+  "n": 63,
+  "ar": "المنافقون",
+  "tr": "Al-Munafiqun",
+  "meaning": {
+   "en": "The Hypocrites",
+   "fr": "Les Hypocrites",
+   "es": "Los Hipócritas"
+  },
+  "verses": 11
+ },
+ {
+  "n": 64,
+  "ar": "التغابن",
+  "tr": "At-Taghabun",
+  "meaning": {
+   "en": "Mutual Loss and Gain",
+   "fr": "La Grande Perte",
+   "es": "El Engaño recíproco"
+  },
+  "verses": 18
+ },
+ {
+  "n": 65,
+  "ar": "الطلاق",
+  "tr": "At-Talaq",
+  "meaning": {
+   "en": "The Divorce",
+   "fr": "Le Divorce",
+   "es": "El Divorcio"
+  },
+  "verses": 12
+ },
+ {
+  "n": 66,
+  "ar": "التحريم",
+  "tr": "At-Tahrim",
+  "meaning": {
+   "en": "The Prohibition",
+   "fr": "L'Interdiction",
+   "es": "La Prohibición"
+  },
+  "verses": 12
+ },
+ {
+  "n": 67,
+  "ar": "الملك",
+  "tr": "Al-Mulk",
+  "meaning": {
+   "en": "The Sovereignty",
+   "fr": "La Royauté",
+   "es": "El Dominio"
+  },
+  "verses": 30
+ },
+ {
+  "n": 68,
+  "ar": "القلم",
+  "tr": "Al-Qalam",
+  "meaning": {
+   "en": "The Pen",
+   "fr": "La Plume",
+   "es": "El Cálamo"
+  },
+  "verses": 52
+ },
+ {
+  "n": 69,
+  "ar": "الحاقة",
+  "tr": "Al-Haqqah",
+  "meaning": {
+   "en": "The Reality",
+   "fr": "Celle qui montre la vérité",
+   "es": "La Inevitable"
+  },
+  "verses": 52
+ },
+ {
+  "n": 70,
+  "ar": "المعارج",
+  "tr": "Al-Ma'arij",
+  "meaning": {
+   "en": "The Ascending Ways",
+   "fr": "Les Voies d'ascension",
+   "es": "Las Vías de ascensión"
+  },
+  "verses": 44
+ },
+ {
+  "n": 71,
+  "ar": "نوح",
+  "tr": "Nuh",
+  "meaning": {
+   "en": "Noah",
+   "fr": "Noé",
+   "es": "Noé"
+  },
+  "verses": 28
+ },
+ {
+  "n": 72,
+  "ar": "الجن",
+  "tr": "Al-Jinn",
+  "meaning": {
+   "en": "The Jinn",
+   "fr": "Les Djinns",
+   "es": "Los Genios"
+  },
+  "verses": 28
+ },
+ {
+  "n": 73,
+  "ar": "المزمل",
+  "tr": "Al-Muzzammil",
+  "meaning": {
+   "en": "The Enwrapped",
+   "fr": "L'Enveloppé",
+   "es": "El Envuelto"
+  },
+  "verses": 20
+ },
+ {
+  "n": 74,
+  "ar": "المدثر",
+  "tr": "Al-Muddaththir",
+  "meaning": {
+   "en": "The Cloaked",
+   "fr": "Le Revêtu d'un manteau",
+   "es": "El Arropado"
+  },
+  "verses": 56
+ },
+ {
+  "n": 75,
+  "ar": "القيامة",
+  "tr": "Al-Qiyamah",
+  "meaning": {
+   "en": "The Resurrection",
+   "fr": "La Résurrection",
+   "es": "La Resurrección"
+  },
+  "verses": 40
+ },
+ {
+  "n": 76,
+  "ar": "الإنسان",
+  "tr": "Al-Insan",
+  "meaning": {
+   "en": "The Human",
+   "fr": "L'Homme",
+   "es": "El Hombre"
+  },
+  "verses": 31
+ },
+ {
+  "n": 77,
+  "ar": "المرسلات",
+  "tr": "Al-Mursalat",
+  "meaning": {
+   "en": "Those Sent Forth",
+   "fr": "Les Envoyés",
+   "es": "Los Enviados"
+  },
+  "verses": 50
+ },
+ {
+  "n": 78,
+  "ar": "النبأ",
+  "tr": "An-Naba",
+  "meaning": {
+   "en": "The Tidings",
+   "fr": "La Nouvelle",
+   "es": "La Noticia"
+  },
+  "verses": 40
+ },
+ {
+  "n": 79,
+  "ar": "النازعات",
+  "tr": "An-Nazi'at",
+  "meaning": {
+   "en": "Those Who Pull Out",
+   "fr": "Les Anges qui arrachent",
+   "es": "Los que arrancan"
+  },
+  "verses": 46
+ },
+ {
+  "n": 80,
+  "ar": "عبس",
+  "tr": "Abasa",
+  "meaning": {
+   "en": "He Frowned",
+   "fr": "Il s'est renfrogné",
+   "es": "Frunció el ceño"
+  },
+  "verses": 42
+ },
+ {
+  "n": 81,
+  "ar": "التكوير",
+  "tr": "At-Takwir",
+  "meaning": {
+   "en": "The Folding Up",
+   "fr": "L'Obscurcissement",
+   "es": "El Oscurecimiento"
+  },
+  "verses": 29
+ },
+ {
+  "n": 82,
+  "ar": "الانفطار",
+  "tr": "Al-Infitar",
+  "meaning": {
+   "en": "The Cleaving",
+   "fr": "La Rupture",
+   "es": "La Hendidura"
+  },
+  "verses": 19
+ },
+ {
+  "n": 83,
+  "ar": "المطففين",
+  "tr": "Al-Mutaffifin",
+  "meaning": {
+   "en": "Those Who Give Short Measure",
+   "fr": "Les Fraudeurs",
+   "es": "Los Defraudadores"
+  },
+  "verses": 36
+ },
+ {
+  "n": 84,
+  "ar": "الانشقاق",
+  "tr": "Al-Inshiqaq",
+  "meaning": {
+   "en": "The Splitting",
+   "fr": "La Déchirure",
+   "es": "El Resquebrajamiento"
+  },
+  "verses": 25
+ },
+ {
+  "n": 85,
+  "ar": "البروج",
+  "tr": "Al-Buruj",
+  "meaning": {
+   "en": "The Constellations",
+   "fr": "Les Constellations",
+   "es": "Las Constelaciones"
+  },
+  "verses": 22
+ },
+ {
+  "n": 86,
+  "ar": "الطارق",
+  "tr": "At-Tariq",
+  "meaning": {
+   "en": "The Night Visitor",
+   "fr": "L'Astre nocturne",
+   "es": "El Astro nocturno"
+  },
+  "verses": 17
+ },
+ {
+  "n": 87,
+  "ar": "الأعلى",
+  "tr": "Al-A'la",
+  "meaning": {
+   "en": "The Most High",
+   "fr": "Le Très-Haut",
+   "es": "El Altísimo"
+  },
+  "verses": 19
+ },
+ {
+  "n": 88,
+  "ar": "الغاشية",
+  "tr": "Al-Ghashiyah",
+  "meaning": {
+   "en": "The Overwhelming",
+   "fr": "L'Enveloppante",
+   "es": "La que cubre"
+  },
+  "verses": 26
+ },
+ {
+  "n": 89,
+  "ar": "الفجر",
+  "tr": "Al-Fajr",
+  "meaning": {
+   "en": "The Dawn",
+   "fr": "L'Aube",
+   "es": "La Aurora"
+  },
+  "verses": 30
+ },
+ {
+  "n": 90,
+  "ar": "البلد",
+  "tr": "Al-Balad",
+  "meaning": {
+   "en": "The City",
+   "fr": "La Cité",
+   "es": "La Ciudad"
+  },
+  "verses": 20
+ },
+ {
+  "n": 91,
+  "ar": "الشمس",
+  "tr": "Ash-Shams",
+  "meaning": {
+   "en": "The Sun",
+   "fr": "Le Soleil",
+   "es": "El Sol"
+  },
+  "verses": 15
+ },
+ {
+  "n": 92,
+  "ar": "الليل",
+  "tr": "Al-Layl",
+  "meaning": {
+   "en": "The Night",
+   "fr": "La Nuit",
+   "es": "La Noche"
+  },
+  "verses": 21
+ },
+ {
+  "n": 93,
+  "ar": "الضحى",
+  "tr": "Ad-Duha",
+  "meaning": {
+   "en": "The Morning Brightness",
+   "fr": "Le Jour montant",
+   "es": "La Mañana"
+  },
+  "verses": 11
+ },
+ {
+  "n": 94,
+  "ar": "الشرح",
+  "tr": "Ash-Sharh",
+  "meaning": {
+   "en": "The Opening Up",
+   "fr": "L'Ouverture",
+   "es": "El Ensanchamiento"
+  },
+  "verses": 8
+ },
+ {
+  "n": 95,
+  "ar": "التين",
+  "tr": "At-Tin",
+  "meaning": {
+   "en": "The Fig",
+   "fr": "Le Figuier",
+   "es": "La Higuera"
+  },
+  "verses": 8
+ },
+ {
+  "n": 96,
+  "ar": "العلق",
+  "tr": "Al-Alaq",
+  "meaning": {
+   "en": "The Clinging Clot",
+   "fr": "L'Adhérence",
+   "es": "El Coágulo"
+  },
+  "verses": 19
+ },
+ {
+  "n": 97,
+  "ar": "القدر",
+  "tr": "Al-Qadr",
+  "meaning": {
+   "en": "The Decree",
+   "fr": "La Destinée",
+   "es": "El Decreto"
+  },
+  "verses": 5
+ },
+ {
+  "n": 98,
+  "ar": "البينة",
+  "tr": "Al-Bayyinah",
+  "meaning": {
+   "en": "The Clear Proof",
+   "fr": "La Preuve",
+   "es": "La Prueba clara"
+  },
+  "verses": 8
+ },
+ {
+  "n": 99,
+  "ar": "الزلزلة",
+  "tr": "Az-Zalzalah",
+  "meaning": {
+   "en": "The Earthquake",
+   "fr": "La Secousse",
+   "es": "El Terremoto"
+  },
+  "verses": 8
+ },
+ {
+  "n": 100,
+  "ar": "العاديات",
+  "tr": "Al-Adiyat",
+  "meaning": {
+   "en": "The Chargers",
+   "fr": "Les Coursiers",
+   "es": "Los Corceles"
+  },
+  "verses": 11
+ },
+ {
+  "n": 101,
+  "ar": "القارعة",
+  "tr": "Al-Qari'ah",
+  "meaning": {
+   "en": "The Striking",
+   "fr": "Le Fracas",
+   "es": "La Calamidad"
+  },
+  "verses": 11
+ },
+ {
+  "n": 102,
+  "ar": "التكاثر",
+  "tr": "At-Takathur",
+  "meaning": {
+   "en": "Rivalry in Increase",
+   "fr": "La Course aux richesses",
+   "es": "La Rivalidad"
+  },
+  "verses": 8
+ },
+ {
+  "n": 103,
+  "ar": "العصر",
+  "tr": "Al-Asr",
+  "meaning": {
+   "en": "The Time",
+   "fr": "Le Temps",
+   "es": "La Tarde"
+  },
+  "verses": 3
+ },
+ {
+  "n": 104,
+  "ar": "الهمزة",
+  "tr": "Al-Humazah",
+  "meaning": {
+   "en": "The Slanderer",
+   "fr": "Les Calomniateurs",
+   "es": "El Difamador"
+  },
+  "verses": 9
+ },
+ {
+  "n": 105,
+  "ar": "الفيل",
+  "tr": "Al-Fil",
+  "meaning": {
+   "en": "The Elephant",
+   "fr": "L'Éléphant",
+   "es": "El Elefante"
+  },
+  "verses": 5
+ },
+ {
+  "n": 106,
+  "ar": "قريش",
+  "tr": "Quraysh",
+  "meaning": {
+   "en": "Quraysh",
+   "fr": "Qoraïch",
+   "es": "Quraysh"
+  },
+  "verses": 4
+ },
+ {
+  "n": 107,
+  "ar": "الماعون",
+  "tr": "Al-Ma'un",
+  "meaning": {
+   "en": "Small Kindnesses",
+   "fr": "L'Ustensile",
+   "es": "La Ayuda mutua"
+  },
+  "verses": 7
+ },
+ {
+  "n": 108,
+  "ar": "الكوثر",
+  "tr": "Al-Kawthar",
+  "meaning": {
+   "en": "The Abundance",
+   "fr": "L'Abondance",
+   "es": "La Abundancia"
+  },
+  "verses": 3
+ },
+ {
+  "n": 109,
+  "ar": "الكافرون",
+  "tr": "Al-Kafirun",
+  "meaning": {
+   "en": "The Disbelievers",
+   "fr": "Les Infidèles",
+   "es": "Los Infieles"
+  },
+  "verses": 6
+ },
+ {
+  "n": 110,
+  "ar": "النصر",
+  "tr": "An-Nasr",
+  "meaning": {
+   "en": "The Help",
+   "fr": "Les Secours",
+   "es": "El Auxilio"
+  },
+  "verses": 3
+ },
+ {
+  "n": 111,
+  "ar": "المسد",
+  "tr": "Al-Masad",
+  "meaning": {
+   "en": "The Palm Fibre",
+   "fr": "Les Fibres",
+   "es": "Las Fibras"
+  },
+  "verses": 5
+ },
+ {
+  "n": 112,
+  "ar": "الإخلاص",
+  "tr": "Al-Ikhlas",
+  "meaning": {
+   "en": "The Sincerity",
+   "fr": "Le Monothéisme pur",
+   "es": "La Fe pura"
+  },
+  "verses": 4
+ },
+ {
+  "n": 113,
+  "ar": "الفلق",
+  "tr": "Al-Falaq",
+  "meaning": {
+   "en": "The Daybreak",
+   "fr": "L'Aube naissante",
+   "es": "El Alba"
+  },
+  "verses": 5
+ },
+ {
+  "n": 114,
+  "ar": "الناس",
+  "tr": "An-Nas",
+  "meaning": {
+   "en": "The People",
+   "fr": "Les Hommes",
+   "es": "Los Hombres"
+  },
+  "verses": 6
+ }
+]
