@@ -21,12 +21,17 @@ for line in sys.stdin:
     lc = j.get('lang_code'); w = j.get('word')
     if lc not in LANGS or not w or len(w) > 60: continue
     senses = j.get('senses') or []
-    gl, form = [], ''
+    gl, form, exs = [], '', []
     for s in senses:
         fo = s.get('form_of') or s.get('alt_of')
         if fo and not form: form = (fo[0] or {}).get('word', '')
         g = (s.get('glosses') or [''])[-1]
-        if g and not fo and len(gl) < 3: gl.append(g[:200])
+        if g and not fo and len(gl) < 4:
+            gl.append(g[:220]); ex = ''
+            for x in s.get('examples') or []:
+                t = (x.get('text') or '').strip()
+                if t and len(t) <= 220: ex = t + (' — ' + x['english'][:160] if x.get('english') else ''); break
+            exs.append(ex)
     if not gl and not form: continue
     if not gl and lc not in KEEP_FORMS: continue
     ety = (j.get('etymology_text') or '')[:600]
@@ -43,6 +48,25 @@ for line in sys.stdin:
     if ety and gl: e['e'] = ety
     if xs and gl: e['x'] = xs
     if root: e['r'] = re.sub(r'[\s\-]', '', root)
+    if gl and any(exs): e['ex'] = exs
+    ipa = []
+    for so in j.get('sounds') or []:
+        if so.get('ipa') and len(ipa) < 3:
+            tg = [t for t in (so.get('tags') or []) if t in ('UK', 'US', 'Received-Pronunciation', 'General-American', 'France', 'Spain', 'Latin-America', 'Classical', 'Ecclesiastical', 'Modern-Standard-Arabic', 'Classical-Arabic', 'Israel', 'Tiberian')]
+            ipa.append([so['ipa'][:40], (tg[0] if tg else '').replace('Received-Pronunciation', 'UK').replace('General-American', 'US')])
+    if ipa and gl: e['ipa'] = ipa
+    rel = []
+    for f in ('related', 'derived', 'synonyms'):
+        for r in j.get(f) or []:
+            w2 = r.get('word')
+            if w2 and len(rel) < 8 and w2 not in rel and len(w2) <= 40: rel.append(w2)
+    if rel and gl: e['rel'] = rel
+    hd = (j.get('head_templates') or [{}])[0].get('expansion', '')
+    if hd and gl and hd != w: e['hd'] = hd[:100]
+    tr = ''
+    for fm in j.get('forms') or []:
+        if 'romanization' in (fm.get('tags') or []): tr = fm.get('form', '')[:40]; break
+    if tr: e['tr'] = tr
     k = key(lc, w)
     if len(words[k]) < 6: words[k].append(e); n += 1
 print('words', len(words), 'entries', n, file=sys.stderr)
