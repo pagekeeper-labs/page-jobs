@@ -1,0 +1,58 @@
+name: Word lists
+# Turns freely licensed dictionaries into small packs and sends them to the site (Lane, Lewis & Short, Brown-Driver-Briggs).
+# Started by the site until every one is in place, or by hand. Sources and licences: ops/lex/*.py.
+on:
+  repository_dispatch:
+    types: [lexicons]
+  workflow_dispatch:
+    inputs:
+      only: { description: 'one dictionary (lane, ls, bdb) or empty for all missing', default: '' }
+      force: { description: 'send again even if complete (yes/no)', default: 'no' }
+permissions:
+  contents: read
+concurrency: words
+jobs:
+  words:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      API: ${{ secrets.SITE }}
+      KEY: ${{ secrets.JOBS_KEY }}
+      ONLY: ${{ inputs.only || '' }}
+      FORCE: ${{ inputs.force || 'no' }}
+    steps:
+      - name: What is missing?
+        id: n
+        run: |
+          [ -n "$API" ] && [ -n "$KEY" ] || { echo "not set up yet"; echo "todo=" >> "$GITHUB_OUTPUT"; exit 0; }
+          S=$(curl -s -H "x-ops-key: $KEY" "$API/api/ops/maps/lex/status")
+          V=$(echo "$S" | jq -r '.v // "v1"'); TODO=""
+          for d in lane ls bdb; do
+            [ -n "$ONLY" ] && [ "$ONLY" != "$d" ] && continue
+            if [ "$d" = "bdb" ]; then OK=$(echo "$S" | jq -r --arg v "$V" '(.done.bdb.v == $v) and (.done["bdb-arc"].v == $v)'); else OK=$(echo "$S" | jq -r --arg d "$d" --arg v "$V" '.done[$d].v == $v'); fi
+            if [ "$OK" != "true" ] || [ "$FORCE" = "yes" ]; then TODO="$TODO $d"; fi
+          done
+          echo "to do:$TODO"; echo "todo=$TODO" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.n.outputs.todo != ''
+        with: { fetch-depth: 1 }
+      - name: Lane
+        if: contains(steps.n.outputs.todo, 'lane')
+        run: |
+          git clone -q --depth 1 https://github.com/laneslexicon/xml /tmp/lane
+          python3 ops/lex/lane.py /tmp/lane /tmp/out && python3 ops/lex/pack.py /tmp/out/lane /tmp/packed lane
+          python3 ops/lex/send.py /tmp/packed/lane lane
+      - name: Lewis and Short
+        if: contains(steps.n.outputs.todo, 'ls')
+        run: |
+          git clone -q --depth 1 --filter=blob:none --sparse https://github.com/PerseusDL/lexica /tmp/lexica
+          (cd /tmp/lexica && git sparse-checkout set CTS_XML_TEI/perseus/pdllex/lat/ls)
+          python3 ops/lex/ls.py /tmp/lexica/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng1.xml /tmp/out && python3 ops/lex/pack.py /tmp/out/ls /tmp/packed ls
+          python3 ops/lex/send.py /tmp/packed/ls ls
+      - name: Brown-Driver-Briggs
+        if: contains(steps.n.outputs.todo, 'bdb')
+        run: |
+          git clone -q --depth 1 https://github.com/openscriptures/HebrewLexicon /tmp/heb
+          python3 ops/lex/bdb.py /tmp/heb/BrownDriverBriggs.xml /tmp/out
+          python3 ops/lex/pack.py /tmp/out/bdb /tmp/packed bdb && python3 ops/lex/pack.py /tmp/out/bdb-arc /tmp/packed bdb-arc
+          python3 ops/lex/send.py /tmp/packed/bdb bdb && python3 ops/lex/send.py /tmp/packed/bdb-arc bdb-arc
