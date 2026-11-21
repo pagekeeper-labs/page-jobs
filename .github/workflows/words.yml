@@ -1,12 +1,13 @@
 name: Word lists
-# Turns freely licensed dictionaries into small packs and sends them to the site (Lane, Lewis & Short, Brown-Driver-Briggs).
+# Turns freely licensed dictionaries into small packs and sends them to the site: Lane, Lewis & Short, Brown-Driver-Briggs,
+# Lisan al-Arab and Maqayis al-Lugha (OpenITI), the Gaffiot draft, and Wiktionary words in many languages (Wiktextract).
 # Started by the site until every one is in place, or by hand. Sources and licences: ops/lex/*.py.
 on:
   repository_dispatch:
     types: [lexicons]
   workflow_dispatch:
     inputs:
-      only: { description: 'one dictionary (lane, ls, bdb) or empty for all missing', default: '' }
+      only: { description: 'one dictionary (lane, ls, bdb, lisan, maqayis, gaffiot, wikt) or empty for all missing', default: '' }
       force: { description: 'send again even if complete (yes/no)', default: 'no' }
 permissions:
   contents: read
@@ -14,7 +15,7 @@ concurrency: words
 jobs:
   words:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     env:
       API: ${{ secrets.SITE }}
       KEY: ${{ secrets.JOBS_KEY }}
@@ -27,7 +28,7 @@ jobs:
           [ -n "$API" ] && [ -n "$KEY" ] || { echo "not set up yet"; echo "todo=" >> "$GITHUB_OUTPUT"; exit 0; }
           S=$(curl -s -H "x-ops-key: $KEY" "$API/api/ops/maps/lex/status")
           V=$(echo "$S" | jq -r '.v // "v1"'); TODO=""
-          for d in lane ls bdb; do
+          for d in lane ls bdb lisan maqayis gaffiot wikt; do
             [ -n "$ONLY" ] && [ "$ONLY" != "$d" ] && continue
             if [ "$d" = "bdb" ]; then OK=$(echo "$S" | jq -r --arg v "$V" '(.done.bdb.v == $v) and (.done["bdb-arc"].v == $v)'); else OK=$(echo "$S" | jq -r --arg d "$d" --arg v "$V" '.done[$d].v == $v'); fi
             if [ "$OK" != "true" ] || [ "$FORCE" = "yes" ]; then TODO="$TODO $d"; fi
@@ -43,7 +44,7 @@ jobs:
           python3 ops/lex/lane.py /tmp/lane /tmp/out && python3 ops/lex/pack.py /tmp/out/lane /tmp/packed lane
           python3 ops/lex/send.py /tmp/packed/lane lane
       - name: Lewis and Short
-        if: contains(steps.n.outputs.todo, 'ls')
+        if: contains(format('{0} ', steps.n.outputs.todo), ' ls ')
         run: |
           git clone -q --depth 1 --filter=blob:none --sparse https://github.com/PerseusDL/lexica /tmp/lexica
           (cd /tmp/lexica && git sparse-checkout set CTS_XML_TEI/perseus/pdllex/lat/ls)
@@ -56,3 +57,26 @@ jobs:
           python3 ops/lex/bdb.py /tmp/heb/BrownDriverBriggs.xml /tmp/out
           python3 ops/lex/pack.py /tmp/out/bdb /tmp/packed bdb && python3 ops/lex/pack.py /tmp/out/bdb-arc /tmp/packed bdb-arc
           python3 ops/lex/send.py /tmp/packed/bdb bdb && python3 ops/lex/send.py /tmp/packed/bdb-arc bdb-arc
+      - name: Lisan al-Arab and Maqayis al-Lugha
+        if: contains(steps.n.outputs.todo, 'lisan') || contains(steps.n.outputs.todo, 'maqayis')
+        run: |
+          git clone -q --depth 1 --filter=blob:none --sparse https://github.com/OpenITI/0725AH /tmp/oi7 && (cd /tmp/oi7 && git sparse-checkout set data/0711IbnManzurIfriqi/0711IbnManzurIfriqi.LisanCarab)
+          git clone -q --depth 1 --filter=blob:none --sparse https://github.com/OpenITI/0400AH /tmp/oi4 && (cd /tmp/oi4 && git sparse-checkout set data/0395IbnFarisQazwini/0395IbnFarisQazwini.MucjamMaqayis)
+          python3 ops/lex/openiti.py /tmp/oi7/data/0711IbnManzurIfriqi/0711IbnManzurIfriqi.LisanCarab/0711IbnManzurIfriqi.LisanCarab.Shamela0001687-ara1.mARkdown /tmp/packed lisan
+          python3 ops/lex/openiti.py /tmp/oi4/data/0395IbnFarisQazwini/0395IbnFarisQazwini.MucjamMaqayis/0395IbnFarisQazwini.MucjamMaqayis.Shamela0021710-ara1 /tmp/packed maqayis
+          python3 ops/lex/send.py /tmp/packed/lisan lisan && python3 ops/lex/send.py /tmp/packed/maqayis maqayis
+      - name: Gaffiot
+        if: contains(steps.n.outputs.todo, 'gaffiot')
+        run: |
+          curl -sSL -o /tmp/g.zip "https://sourceforge.net/projects/digital-gaffiot/files/gaffiot_xml-150216.zip/download"
+          mkdir -p /tmp/g && (cd /tmp/g && unzip -q -o /tmp/g.zip) && find /tmp/g -name '*.xml' -exec ls -la {} \;
+          X=$(find /tmp/g -name '*unicode*.xml' | head -1); [ -n "$X" ] || X=$(find /tmp/g -name '*.xml' | head -1)
+          python3 ops/lex/ls.py "$X" /tmp/out gaffiot && python3 ops/lex/pack.py /tmp/out/gaffiot /tmp/packed gaffiot
+          python3 ops/lex/send.py /tmp/packed/gaffiot gaffiot
+      - name: Wiktionary words
+        if: contains(steps.n.outputs.todo, 'wikt')
+        run: |
+          curl -sSL --retry 3 -o /tmp/w.jsonl.gz https://kaikki.org/dictionary/raw-wiktextract-data.jsonl.gz
+          ls -la /tmp/w.jsonl.gz
+          zcat /tmp/w.jsonl.gz | grep -E '"lang_code": ?"(en|fr|es|la|ar|he|arc|phn|xpu|egy|syc|akk|grc|ang|enm|fro|sem-pro|afa-pro)"' | python3 ops/lex/wikt.py /tmp/packed
+          python3 ops/lex/send.py /tmp/packed/wikt wikt
