@@ -1,5 +1,5 @@
 name: Map tiles
-# Cuts newly uploaded maps into zoomable tiles, makes clearer copies, reads place names and looks for catalogue records.
+# Cuts newly uploaded maps into zoomable tiles, makes clearer copies, finds sharper scans when asked, reads place names and looks for catalogue records.
 # Started by the site when a map is added, and once a day as a safety net. Nothing about the maps is printed here: the full log is sent privately to the site.
 on:
   repository_dispatch:
@@ -23,8 +23,8 @@ jobs:
           echo "site answered $(curl -s -o /dev/null -w '%{http_code}' -H "x-ops-key: $MAP_OPS_KEY" "$API/api/ops/maps/nofp" || echo 000)"
           g() { curl -s -H "x-ops-key: $MAP_OPS_KEY" "$API/api/ops/maps/$1" | jq "$2" 2>/dev/null || echo 0; }
           a=$(g pending '.maps | length'); b=$(g nofp '.maps | length'); c=$(g clear '.maps | length')
-          d=$(g toread 'if .left > 0 then (.maps | length) else 0 end'); e=$(g tocheck '.posts | length')
-          echo "waiting $a, fingerprints $b, clearer copies $c, to read $d, to check $e"; echo "n=$((a + b + c + d + e))" >> "$GITHUB_OUTPUT"
+          d=$(g toread 'if .left > 0 then (.maps | length) else 0 end'); e=$(g tocheck '.posts | length'); f=$(g better '.maps | length')
+          echo "waiting $a, fingerprints $b, clearer copies $c, to read $d, to check $e, map bot $f"; echo "n=$((a + b + c + d + e + f))" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
         if: steps.n.outputs.n != '0'
         with: { sparse-checkout: 'ops', fetch-depth: 1 }
@@ -35,11 +35,14 @@ jobs:
         if: steps.n.outputs.n != '0'
         run: |
           sudo apt-get install -y -qq libimage-exiftool-perl >/dev/null
+          pip install -q opencv-python-headless==4.10.0.84 numpy >/dev/null 2>&1 || true
           cd ops/maps && npm i --no-save sharp@0.34.5 >/dev/null 2>&1
       - name: Cut, read and check the maps
         if: steps.n.outputs.n != '0'
         run: |
-          node ops/maps/tile.mjs > /tmp/job.log 2>&1; echo "tiles finished (exit $?)"
+          node ops/maps/better.mjs > /tmp/job.log 2>&1; echo "map bot finished (exit $?)"
+          node ops/maps/tile.mjs >> /tmp/job.log 2>&1; echo "tiles finished (exit $?)"
+          node ops/maps/better.mjs >> /tmp/job.log 2>&1; echo "map bot (line up) finished (exit $?)"
           node ops/maps/check.mjs >> /tmp/job.log 2>&1; echo "checks finished (exit $?), $(wc -l < /tmp/job.log) log lines sent privately to the site"
       - name: Send the log privately
         if: always() && steps.n.outputs.n != '0'
