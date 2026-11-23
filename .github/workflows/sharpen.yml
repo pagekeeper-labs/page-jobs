@@ -1,0 +1,47 @@
+name: Sharper maps
+# Makes AI-sharpened copies of maps when members ask for them (Real-ESRGAN on the CPU, optional stain and fold clean-up).
+# Kept apart from the map tiles job because it can take up to an hour. Nothing about the maps is printed here: the log goes privately to the site.
+on:
+  repository_dispatch:
+    types: [map-sharpen]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency: map-sharpen
+jobs:
+  sharpen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 170
+    env:
+      API: ${{ secrets.SITE }}
+      MAP_OPS_KEY: ${{ secrets.JOBS_KEY }}
+      SR_WEIGHTS: /tmp/sr
+    steps:
+      - name: Anything waiting?
+        id: n
+        run: |
+          [ -n "$API" ] && [ -n "$MAP_OPS_KEY" ] || { echo "not set up yet"; echo "n=0" >> "$GITHUB_OUTPUT"; exit 0; }
+          n=$(curl -s -H "x-ops-key: $MAP_OPS_KEY" "$API/api/ops/maps/sharp" | jq '.maps | length' 2>/dev/null || echo 0); echo "waiting $n"; echo "n=$n" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.n.outputs.n != '0'
+        with: { sparse-checkout: 'ops', fetch-depth: 1 }
+      - uses: actions/setup-python@v5
+        if: steps.n.outputs.n != '0'
+        with: { python-version: '3.12' }
+      - uses: actions/setup-node@v4
+        if: steps.n.outputs.n != '0'
+        with: { node-version: 22 }
+      - name: Tools
+        if: steps.n.outputs.n != '0'
+        run: |
+          pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -q spandrel==0.4.2 opencv-python-headless==4.10.0.84 numpy
+          mkdir -p /tmp/sr
+          curl -sSL -o /tmp/sr/x4.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth
+          curl -sSL -o /tmp/sr/x2.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth
+      - name: Sharpen
+        if: steps.n.outputs.n != '0'
+        run: node ops/maps/sharp.mjs > /tmp/job.log 2>&1; echo "finished (exit $?)"
+      - name: Send the log privately
+        if: always() && steps.n.outputs.n != '0'
+        run: '[ -f /tmp/job.log ] && curl -s -o /dev/null -w "log %{http_code}\n" -X POST -H "x-ops-key: $MAP_OPS_KEY" --data-binary @/tmp/job.log "$API/api/ops/joblog?job=sharpen" || true'
