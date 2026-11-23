@@ -6,8 +6,8 @@ Writes packs of ~150 KB in key order plus a manifest, like pack.py:  <out>/wikt/
 Key: '<language code>:<word>' with accents, vowel marks and points taken off, lower case, and Arabic alif/ya/ta marbuta
 unified (the same rule as the site's search).  Usage: zcat raw.jsonl.gz | wikt.py <out dir>"""
 import sys, os, json, re, unicodedata, shutil, collections
-LANGS = {'en', 'fr', 'es', 'la', 'ar', 'he', 'arc', 'phn', 'xpu', 'egy', 'syc', 'akk', 'grc', 'gkm', 'ang', 'enm', 'fro', 'sem-pro', 'afa-pro'}
-KEEP_FORMS = {'la', 'fr', 'es', 'ar', 'he', 'en', 'grc', 'gkm'}
+LANGS = {'en', 'fr', 'es', 'la', 'ar', 'he', 'arc', 'phn', 'xpu', 'egy', 'syc', 'akk', 'grc', 'gkm', 'el', 'cop', 'xcl', 'hy', 'oge', 'ka', 'cu', 'ang', 'enm', 'fro', 'sem-pro', 'afa-pro'}
+KEEP_FORMS = {'la', 'fr', 'es', 'ar', 'he', 'en', 'grc', 'gkm', 'cop', 'xcl', 'oge', 'cu', 'phn', 'xpu', 'syc', 'arc'}
 def key(lang, w):
     s = unicodedata.normalize('NFD', w)
     s = ''.join(c for c in s if unicodedata.category(c) != 'Mn').lower()
